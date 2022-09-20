@@ -1,8 +1,11 @@
 body{
-    margin: 0;
+    margin:0 50px;
 }
 h1{
     margin: 0;
+    position: relative;
+    top: 30px;
+    width: 300px;
 }
 .header{
     width: 100%;
@@ -28,14 +31,24 @@ h1{
     grid-template-columns: 1fr 1fr 1fr;
 
 }
+.menuImg{
+    height: 70px;
+    width: 70px;
+}
 .foodImg{
     height: 300px;
     width: 300px;
-    rotate: 50%;
 }
 .leftSide{
     text-align: right;
 }
-.selected{
+.menuBorder{
+    border: 1px solid black;
+}
+.selectedBtn{
     border-left: 5px solid red;
+}
+.btnLayout{
+    display:grid;
+    grid-template-columns: 1fr 3fr;
 }

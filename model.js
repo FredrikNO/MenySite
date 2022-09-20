@@ -1,24 +1,191 @@
-let menuSelect=[];
-let menu=[
-    {bilde:'<img class="foodImg" src="" alt="">',
-    rett:'Tomatsuppe med kokt egg',
-    pris:70},
-    {bilde:'<img class="foodImg" src="" alt="">',
-    rett:'Spekeskinke med sommerkål',
-    pris:80},
-    {bilde:'<img class="foodImg" src="" alt="">',
-    rett:'Hamburger',
-    pris:100},
-    {bilde:'<img class="foodImg" src="" alt="">',
-    rett:'Grillet torsk i folie',
-    pris:110},
-    {bilde:'<img class="foodImg" src="" alt="">',
-    rett:'Cæsarsalat med grillet kylling',
-    pris:120},
-    {bilde:'<img class="foodImg" src="" alt="">',
-    rett:'Grillspyd med breiflabb',
-    pris:150}
-];
-let menuOrder={};
+
+let menu = {
+    dinner: [
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: 'Tomatsuppe med kokt egg',
+            price: 70,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: 'Spekeskinke med sommerkål',
+            price: 80,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: 'Hamburger',
+            price: 100,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: 'Grillet torsk i folie',
+            price: 110,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: 'Cæsarsalat med grillet kylling',
+            price: 120,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: 'Grillspyd med breiflabb',
+            price: 150,
+            amount:1
+        }
+    ],
+    appetizer: [
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0,
+            amount:1
+        }
+    ],
+    dessert: [
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0,
+            amount:1
+        }
+    ],
+    newDishes: [
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0,
+            amount:1
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0,
+            amount:1
+        }
+    ],
+    drinks: [
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0
+        },
+        {
+            picture: '<img class="foodImg" src="" alt="">',
+            dish: '',
+            price: 0
+        }
+    ]
+};
 let viewMenu;
-let selectedMenuItem='';
+let chart=[]
+let selectedMenuchoise='';
+let clickedButton='';
