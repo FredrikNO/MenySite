@@ -156,36 +156,54 @@ let menu = {
         {
             picture: '<img class="foodImg" src="" alt="">',
             dish: '',
-            price: 0
+            price: 0,
+            amount:1
         },
         {
             picture: '<img class="foodImg" src="" alt="">',
             dish: '',
-            price: 0
+            price: 0,
+            amount:1
         },
         {
             picture: '<img class="foodImg" src="" alt="">',
             dish: '',
-            price: 0
+            price: 0,
+            amount:1
         },
         {
             picture: '<img class="foodImg" src="" alt="">',
             dish: '',
-            price: 0
+            price: 0,
+            amount:1
         },
         {
             picture: '<img class="foodImg" src="" alt="">',
             dish: '',
-            price: 0
+            price: 0,
+            amount:1
         },
         {
             picture: '<img class="foodImg" src="" alt="">',
             dish: '',
-            price: 0
+            price: 0,
+            amount:1
         }
     ]
 };
 let viewMenu;
-let chart=[]
+let cart=[];
+let sumprice=0;
 let selectedMenuchoise='';
 let clickedButton='';
+// popup display
+let displayModal='modal-display';
+// popup chart display values
+let cartImg='';
+let cartDescription='';
+let cartPrice='';
+let cartAmount='';
+let cartMenu='';
+let styleContent='';
+let amount=0;
+
