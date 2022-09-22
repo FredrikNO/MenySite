@@ -88,3 +88,7 @@ h1{
     display: grid;
     grid-template-rows: 3fr 1fr;
 }
+
+.cart-descript{
+    margin-left: 30px;
+}

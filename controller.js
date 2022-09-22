@@ -9,30 +9,31 @@ function selectedMenuItem(menuChoise) {
     else return ''
 }
 function addToChart(index) {
+    let tempobject={};
     if (selectedMenuchoise == 'dinner') {
-        cart.push(menu.dinner[index]);
+        tempobject= fillTempObject(tempobject,menu.dinner,index);
+        cart.push(tempobject);
         openModle(menu.dinner,index);
-        resetDinnerArray();
     }
     else if(selectedMenuchoise == 'appetizer') {
-        cart.push(menu.appetizer[index]);
+        tempobject= fillTempObject(tempobject,menu.appetizer,index);
+        cart.push(tempobject);
         openModle(menu.appetizer,index);
-        resetAppetizerArray();
     }
     else if(selectedMenuchoise == 'dessert') {
-        cart.push(menu.dessert[index]);
+        tempobject= fillTempObject(tempobject,menu.dessert,index);
+        cart.push(tempobject);
         openModle(menu.dessert,index);
-        resetDessertArray();
     }
     else if(selectedMenuchoise == 'drinks') {
-        cart.push(menu.drinks[index]);
+        tempobject= fillTempObject(tempobject,menu.drinks,index);
+        cart.push(tempobject);
         openModle(menu.drinks,index);
-        resetDrinksArray();
     }
     else if(selectedMenuchoise == 'newDishes') {
-        cart.push(menu.newDishes[index]);
+        tempobject= fillTempObject(tempobject,menu.newDishes,index);
+        cart.push(tempobject);
         openModle(menu.newDishes,index);
-        resetNewDishesArra();
     }
 }
 function openModle(menuArray,index) {
@@ -48,204 +49,29 @@ function closeModle() {
     displayModal = 'modal-display';
     updateView();
 }
-// Resetting functions
-function resetDinnerArray(){
-    menu.dinner=[
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: 'Tomatsuppe med kokt egg',
-            price: 70,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: 'Spekeskinke med sommerkål',
-            price: 80,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: 'Hamburger',
-            price: 100,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: 'Grillet torsk i folie',
-            price: 110,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: 'Cæsarsalat med grillet kylling',
-            price: 120,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: 'Grillspyd med breiflabb',
-            price: 150,
-            amount:1
-        }
-    ]
+function fillTempObject(tempObject,originalObject,index){
+    tempObject={picture: originalObject[index].picture,
+        dish:originalObject[index].dish,
+        price:originalObject[index].price,
+        amount:originalObject[index].amount};
+    return tempObject;
 }
-function resetAppetizerArray(){
-    menu.appetizer=[
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        }
-    ]
+function removeFromCart(index){
+    cart.splice(index,1);
+    chooseMenu('shoppingCart');
 }
-function resetDessertArray(){
-    menu.dessert=[
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        }
-    ]
+function openCart(){
+    displayModal = 'modal-display';
+    chooseMenu('shoppingCart');
 }
-function resetDrinksArray(){
-    menu.drinks=[
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        }
-    ]
+function keepShopping(){
+    chooseMenu('newDishes')
 }
-function resetNewDishesArra(){
-    [
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        },
-        {
-            picture: '<img class="foodImg" src="" alt="">',
-            dish: '',
-            price: 0,
-            amount:1
-        }
-    ]
+function payForCart(){
+    payed=true;
+    cart=[];
+    viewMenu='';
+    cartMenu='';
+    updateView();
+    payed=false;
 }

@@ -37,38 +37,40 @@ function updateView() {
         </div>
     </div><hr><br>
     <div class="site">
-    <div class="menu">
-        <div class="btnLayout menuBorder ${selectedMenuItem('newDishes')}" onclick="changeMenu('newDishes')">
-            <img class="menuImg" src="" alt="">
-            <h2>Nyheter</h2>
-        </div><br>
-        <div class="menuBorder">
-            <div class="btnLayout ${selectedMenuItem('appetizer')}" onclick="changeMenu('appetizer')">
+        <div class="menu">
+            <div class="btnLayout menuBorder ${selectedMenuItem('newDishes')}" onclick="changeMenu('newDishes')">
                 <img class="menuImg" src="" alt="">
-                <h2>Forrett</h2>
+                <h2>Nyheter</h2>
             </div><br>
-            <div class="btnLayout ${selectedMenuItem('dinner')}" onclick="changeMenu('dinner')">
-                <img class="menuImg" src="" alt="">    
-                <h2>Middag</h2>
+            <div class="menuBorder">
+                <div class="btnLayout ${selectedMenuItem('appetizer')}" onclick="changeMenu('appetizer')">
+                    <img class="menuImg" src="" alt="">
+                    <h2>Forrett</h2>
+                </div><br>
+                <div class="btnLayout ${selectedMenuItem('dinner')}" onclick="changeMenu('dinner')">
+                    <img class="menuImg" src="" alt="">    
+                    <h2>Middag</h2>
+                </div><br>
+                <div class="btnLayout ${selectedMenuItem('dessert')}" onclick="changeMenu('dessert')">
+                    <img class="menuImg" src="" alt="">    
+                    <h2>Dessert</h2>
+                </div><br>
+                <div class="btnLayout ${selectedMenuItem('drinks')}" onclick="changeMenu('drinks')">
+                    <img class="menuImg" src="" alt="">    
+                    <h2>Drikke</h2>
+                </div>
             </div><br>
-            <div class="btnLayout ${selectedMenuItem('dessert')}" onclick="changeMenu('dessert')">
-                <img class="menuImg" src="" alt="">    
-                <h2>Dessert</h2>
-            </div><br>
-            <div class="btnLayout ${selectedMenuItem('drinks')}" onclick="changeMenu('drinks')">
-                <img class="menuImg" src="" alt="">    
-                <h2>Drikke</h2>
-            </div>
-        </div><br>
-        <div class="btnLayout menuBorder ${selectedMenuItem('shoppingCart')}" onclick="changeMenu('shoppingCart')">
-        <img class="menuImg" src="" alt="">
-        <h2>Handlevogn</h2>
+            <div class="btnLayout menuBorder ${selectedMenuItem('shoppingCart')}" onclick="changeMenu('shoppingCart')">
+            <img class="menuImg" src="" alt="">
+            <h2>Handlevogn</h2>
+        </div>
     </div>
-    </div>
+
     <div class="${styleContent = viewMenu != '' ? 'items' : 'model-body cart-size'}">
         ${viewMenu || ''}
         ${cartMenu || ''}
-    </div>
+        ${payed? paymentAccepted():''}
+    </div> 
     <div>
     ${popUp}
     </div>
@@ -142,14 +144,15 @@ function menuDrinks() {
 function shopCart() {
     let tempView = ``;
     for (let i = 0; i < cart.length; i++) {
-        tempView += `<div>
+        tempView += `<div class="cart-descript">
         ${cartImg = cart[i].picture.replace('foodImg', 'menuImg')}
         </div>
         <div class="model-descript">
             <div>${cart[i].dish}</div>
             <div>${cart[i].price}
-            ${cart[i].amount}
+                 ${cart[i].amount}
             </div>
+            <button onclick="removeFromCart(${i})">Fjern varen</button>
         </div>`;
     }
     if (cart.length == 0) {
@@ -162,8 +165,9 @@ function shopCart() {
         tempView += `
         <div style="border-top: 1px solid black;">Summen å betale er:</div>
         <div style="border-top: 1px solid black;">${sumprice}</div>
-    <button>Fortsett å handle</button><button>Betal</button>
+    <button onclick="keepShopping()">Fortsett å handle</button><button onclick="payForCart()">Betal</button>
     `;
+    sumprice=0;
     }
 
     return tempView;
@@ -181,9 +185,13 @@ function popupWindow() {
                 </div>
             </div>
             <button onclick="closeModle()">Fortsett å handle</button>
-            <button onclick="closeModle()">Gå til handlekurv</button>
+            <button onclick="openCart()">Gå til handlekurv</button>
         </div>
     </div>
     `;
+    return tempView;
+}
+function paymentAccepted(){
+    let tempView=`Takk for handelen`; 
     return tempView;
 }

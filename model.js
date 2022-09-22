@@ -206,4 +206,5 @@ let cartAmount='';
 let cartMenu='';
 let styleContent='';
 let amount=0;
+let payed=false;
 
